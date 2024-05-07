@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontier_homepage/cms_service/sanity_api.dart';
 import 'package:frontier_homepage/util/appcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../util/appstring.dart';
@@ -12,6 +13,7 @@ import 'home/components/savebig_widget.dart';
 import 'home/components/welcome_card.dart';
 
 class HomePage extends StatefulWidget {
+ 
   const HomePage({super.key});
 
   @override
@@ -19,6 +21,43 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool looding =true;
+    String? imageUrl;
+  @override
+  void initState() {
+    apicall();
+     WidgetsBinding.instance.addPostFrameCallback((_)async{
+
+ 
+  
+  });
+   
+
+
+    super.initState();
+  }
+
+  apicall()async{
+
+  await ApiServices().fetchData();
+setState(() {
+   looding = false;
+});
+ 
+  }
+
+  // splitImage(){
+
+  //   for (var i = 0; i < refValues.length; i++) {
+
+  //       List<dynamic> cleanedRefValues = refValues.map((ref) {
+  //   return ref.replaceAll("image-", "").replaceAll("-24x24-png", "").replaceAll("-390x276-png", "");
+  // }).toList();
+      
+  //   }
+
+
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,11 +134,11 @@ class _HomePageState extends State<HomePage> {
               const RecentSearchList(),
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: Container(
+                child: looding?SizedBox():Container(
                   height: 342,
-                  decoration: const BoxDecoration(
+                  decoration:  BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage('assets/appimage/bau_offer.png'))),
+                          image: NetworkImage('${cleanedRefValues[2]}'))),
                 ),
               ),
               const SaveBigWidget(),
