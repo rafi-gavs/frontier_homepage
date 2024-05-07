@@ -26,7 +26,7 @@ class _WelcomeCardState extends State<WelcomeCard> {
       return AppString.welcomeTheodore;
     }
 
-    return username;
+    return 'Welcome $username';
   }
 
   @override
