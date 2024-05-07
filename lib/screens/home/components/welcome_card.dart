@@ -21,7 +21,7 @@ class _WelcomeCardState extends State<WelcomeCard> {
   }
 
   String _getName() {
-    String? username = prefs.getString('username');
+    String? username = nPrefs.getString('username');
     if (username == null) {
       return AppString.welcomeTheodore;
     }
