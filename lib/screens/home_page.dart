@@ -13,7 +13,6 @@ import 'home/components/savebig_widget.dart';
 import 'home/components/welcome_card.dart';
 
 class HomePage extends StatefulWidget {
- 
   const HomePage({super.key});
 
   @override
@@ -21,48 +20,28 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool looding =true;
-    String? imageUrl;
+  bool looding = true;
+  String? imageUrl;
   @override
   void initState() {
     apicall();
-     WidgetsBinding.instance.addPostFrameCallback((_)async{
-
- 
-  
-  });
-   
-
+    WidgetsBinding.instance.addPostFrameCallback((_) async {});
 
     super.initState();
   }
 
-  apicall()async{
-
-  await ApiServices().fetchData();
-setState(() {
-   looding = false;
-});
- 
+  apicall() async {
+    await ApiServices().fetchData();
+    setState(() {
+      looding = false;
+    });
   }
 
-  // splitImage(){
-
-  //   for (var i = 0; i < refValues.length; i++) {
-
-  //       List<dynamic> cleanedRefValues = refValues.map((ref) {
-  //   return ref.replaceAll("image-", "").replaceAll("-24x24-png", "").replaceAll("-390x276-png", "");
-  // }).toList();
-      
-  //   }
-
-
-  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GestureDetector(
-        onTap: () {},
+      body: RefreshIndicator(
+                 onRefresh: ()async => await ApiServices().fetchData(),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -134,19 +113,20 @@ setState(() {
               const RecentSearchList(),
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: looding?SizedBox():Container(
-                  height: 342,
-                  decoration:  BoxDecoration(
-                      image: DecorationImage(
-                          image: NetworkImage('${cleanedRefValues[2]}'))),
-                ),
+                child: looding
+                    ? SizedBox()
+                    : Container(
+                        height: 342,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: NetworkImage('${cleanedRefValues[2]}'))),
+                      ),
               ),
               const SaveBigWidget(),
               const GoWildWidget(),
               FlightDetailWidget(
                 isCheckedIn: true,
               ),
-             
               const CheckingInfoCard(
                 headingText:
                     "You are Bringing a Personal Item \nand/or a Carry-On",
@@ -158,18 +138,18 @@ setState(() {
                     infoText:
                         "Personal items and carry- \nons are subject to size check\nat the gate"),
               ),
-              const CheckingInfoCard(addOnText: true,
+              const CheckingInfoCard(
+                  addOnText: true,
                   headingText: 'You are Checking Bags!',
                   cardImage: 'assets/appimage/trollybagbrown.png',
                   infoTextFirst: CheckingInfoText(
                       infoText:
                           'Checked bags must be \ndropped off 60 minutes \nbefore your flights scheduled \ndeparture')),
-                          const DestinationDetailCard()
+              const DestinationDetailCard()
             ],
           ),
         ),
       ),
-     
     );
   }
 }
