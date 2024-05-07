@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:frontier_homepage/util/appcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../util/appstring.dart';
-import '../common_widgets/bottom_navbar.dart';
 import 'home/components/checking_info_card.dart';
 import 'home/flight_details_widget/destination_detail_card.dart';
 import 'home/flight_details_widget/flight_details_widget.dart';
@@ -23,15 +22,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(20),
-        child: Container(
-          decoration: const BoxDecoration(
-            color: AppColor.primary
-          ),
-
-        ) 
-      ),
       body: GestureDetector(
         onTap: () {},
         child: SingleChildScrollView(
@@ -117,7 +107,7 @@ class _HomePageState extends State<HomePage> {
               FlightDetailWidget(
                 isCheckedIn: true,
               ),
-              const WelcomeCard(),
+             
               const CheckingInfoCard(
                 headingText:
                     "You are Bringing a Personal Item \nand/or a Carry-On",
@@ -140,7 +130,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+     
     );
   }
 }
