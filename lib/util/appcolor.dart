@@ -12,6 +12,12 @@ class AppColor {
   static const greenColor = Color(0xFF005A45);
   static const brownColor = Color(0xFFAA6527);
     static const borderColor = Color(0xFFDFDAC9);
+    static const tabBarColor=Color(0xFFE3DDD0);
+    static const bgCream=Color(0xFFFDFAF5);
+    static const btBg=Color(0xFF006643);
+    static const fontSecondary=Color(0xFF504E4B);
+    static const linkText=Color(0xFF007AA8);
+    static const textFieldBorder=Color(0xFF9C9B98);
 
    
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:frontier_homepage/screens/flight_status/flight_status_page.dart';
 import 'package:frontier_homepage/screens/home_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 // import 'package:native_shared_preferences/native_shared_preferences.dart';
 
 // late NativeSharedPreferences nPrefs;
@@ -21,9 +23,10 @@ class MyApp extends StatelessWidget {
       title: 'Frontier Airlines',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        fontFamily: GoogleFonts.poppins().fontFamily,
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: const FlightStatusPage(),
     );
   }
 }
