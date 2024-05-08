@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:frontier_homepage/screens/home_page.dart';
-import 'package:native_shared_preferences/native_shared_preferences.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:native_shared_preferences/native_shared_preferences.dart';
 
-late NativeSharedPreferences nPrefs;
+// late NativeSharedPreferences nPrefs;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  nPrefs = await NativeSharedPreferences.getInstance();
+  // nPrefs = await NativeSharedPreferences.getInstance();
   runApp(const MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

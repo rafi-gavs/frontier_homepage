@@ -12,8 +12,7 @@ class ApiServices {
     final String projectId = 'pfjvqqcl';
     final String dataset = 'production';
     final String apiUrl = 'https://kq4riuh0.api.sanity.io/v1/data/query/';
-    final String apiToken =
-        'YOUR_API_TOKEN'; 
+    final String apiToken = 'YOUR_API_TOKEN';
 
     final String endpointUrl =
         '$apiUrl/production?query=*%5B_type+%3D%3D+%27more%27%5D'; // Replace 'your-data-type' with the name of your Sanity data type
@@ -26,16 +25,10 @@ class ApiServices {
     );
 
     if (response.statusCode == 200) {
-      // Parse JSON response
-      //  jsonData = json.decode(response.body)['result'][0];
-
       print("checking : $jsonData");
-
       Map<String, dynamic> parsedJson = json.decode(response.body);
-
       List<dynamic> legalObject = parsedJson['result'][0]['legalObject'];
-
-      print(legalObject);
+      
       List<dynamic> refValues = legalObject.map((legalObject) {
         if (legalObject is Map<String, dynamic> &&
             legalObject.containsKey('nextIcon')) {

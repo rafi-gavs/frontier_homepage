@@ -3,7 +3,7 @@ import 'package:frontier_homepage/util/appcolor.dart';
 import 'package:frontier_homepage/util/appstring.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../main.dart';
+// import '../../../main.dart';
 
 class WelcomeCard extends StatefulWidget {
   const WelcomeCard({
@@ -20,14 +20,14 @@ class _WelcomeCardState extends State<WelcomeCard> {
     super.initState();
   }
 
-  String _getName() {
-    String? username = nPrefs.getString('username');
-    if (username == null) {
-      return AppString.welcomeTheodore;
-    }
+  // String _getName() {
+    // String? username = nPrefs.getString('username');
+  //   if (username == null) {
+  //     return AppString.welcomeTheodore;
+  //   }
 
-    return 'Welcome $username';
-  }
+  //   return 'Welcome $username';
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class _WelcomeCardState extends State<WelcomeCard> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          _getName(),
+                         AppString.welcomeTheodore,
                           style: GoogleFonts.poppins(fontSize: 20.0, fontWeight: FontWeight.w700, color: AppColor.stringBlackColor),
                         ),
                         const Icon(Icons.arrow_forward_ios_outlined)
