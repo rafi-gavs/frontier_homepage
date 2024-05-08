@@ -38,7 +38,7 @@ class _WelcomeCardState extends State<WelcomeCard> {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.only(top:46.0,bottom: 50,left: 16,right: 16),
+        padding: const EdgeInsets.only(top:46.0,bottom: 65,left: 16,right: 16),
         child: Row(
           children: [
             Container(
