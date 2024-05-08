@@ -21,13 +21,16 @@ class _WelcomeCardState extends State<WelcomeCard> {
   }
 
   String _getName() {
+    if (nPrefs.containsKey('username')) {
+      String? username = nPrefs.getString('username');
+      if (username == null) {
+        return AppString.welcomeTheodore;
+      }
 
-    String? username = nPrefs.getString('username');
-    if (username == null) {
-      return AppString.welcomeTheodore;
+      return 'Welcome $username';
     }
 
-    return 'Welcome $username';
+    return AppString.welcomeTheodore;
   }
 
   @override
