@@ -20,19 +20,19 @@ class _WelcomeCardState extends State<WelcomeCard> {
     super.initState();
   }
 
-  String _getName() {
-    String? username;
-    if (nPrefs.containsKey('username')) {
-      username = nPrefs.getString('username');
+  // String _getName() {
+  //   String? username;
+  //   if (nPrefs.containsKey('username')) {
+  //     username = nPrefs.getString('username');
 
-      if (username == null) {
-        return AppString.welcomeTheodore;
-      }
-    } else {
-      return AppString.welcomeTheodore;
-    }
-    return 'Welcome $username';
-  }
+  //     if (username == null) {
+  //       return AppString.welcomeTheodore;
+  //     }
+  //   } else {
+  //     return AppString.welcomeTheodore;
+  //   }
+  //   return 'Welcome $username';
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +70,8 @@ class _WelcomeCardState extends State<WelcomeCard> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                         _getName(),
+                        //  _getName(),
+                        AppString.welcomeTheodore,
                           style: GoogleFonts.poppins(
                               fontSize: 20.0,
                               fontWeight: FontWeight.w700,
