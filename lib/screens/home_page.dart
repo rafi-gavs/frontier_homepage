@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontier_homepage/cms_service/sanity_api.dart';
+import 'package:frontier_homepage/screens/sample.dart';
 import 'package:frontier_homepage/util/appcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../util/appstring.dart';
@@ -64,34 +65,39 @@ class _HomePageState extends State<HomePage> {
               Padding(
                   padding:
                       const EdgeInsets.only(left: 16.0, right: 16.0, top: 30),
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: AppColor.primary,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(8.0),
-                        bottomLeft: Radius.circular(8.0),
-                        topRight: Radius.circular(8.0),
-                        bottomRight: Radius.circular(8.0),
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color(0x27000000),
-                          blurRadius: 19.56,
-                          blurStyle: BlurStyle.outer,
-                          offset: Offset(0, 0.0),
-                          spreadRadius: 0,
+                  child: InkWell(
+                    onTap:(){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SamplePage()));
+                    } ,
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: AppColor.primary,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(8.0),
+                          bottomLeft: Radius.circular(8.0),
+                          topRight: Radius.circular(8.0),
+                          bottomRight: Radius.circular(8.0),
                         ),
-                      ],
-                    ),
-                    height: 61,
-                    width: double.infinity,
-                    child: Center(
-                      child: Text(
-                        AppString.bookAFlight,
-                        style: GoogleFonts.poppins(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.w600,
-                            color: AppColor.whiteColor),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0x27000000),
+                            blurRadius: 19.56,
+                            blurStyle: BlurStyle.outer,
+                            offset: Offset(0, 0.0),
+                            spreadRadius: 0,
+                          ),
+                        ],
+                      ),
+                      height: 61,
+                      width: double.infinity,
+                      child: Center(
+                        child: Text(
+                          AppString.bookAFlight,
+                          style: GoogleFonts.poppins(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w600,
+                              color: AppColor.whiteColor),
+                        ),
                       ),
                     ),
                   )),
