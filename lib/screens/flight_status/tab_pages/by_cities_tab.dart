@@ -4,7 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../util/appcolor.dart';
 import '../components/app_button.dart';
 import '../components/app_text_field.dart';
+import '../components/search_results.dart';
 import '../flight_status_page.dart';
+
+///Created global [ValueNotifier] variable [byCitiesSearchStackIndex] in [ByCitiesTab] to show result widget based on [IndexedStack] index
+ValueNotifier<int> byCitiesSearchStackIndex = ValueNotifier(0);
 
 class ByCitiesTab extends StatefulWidget {
   const ByCitiesTab({super.key});
@@ -18,7 +22,19 @@ class _ByCitiesTabState extends State<ByCitiesTab> {
   Widget build(BuildContext context) {
     return Container(
       color: AppColor.bgCream,
-      child: _form(),
+      //child: _form(),
+      //child: SearchResults(),
+      child: ValueListenableBuilder<int>(
+          valueListenable: byCitiesSearchStackIndex,
+          builder: (context, index, _) {
+            return IndexedStack(
+              index: index,
+              children: [
+                _form(),
+                const SearchResults(),
+              ],
+            );
+          }),
     );
   }
 
@@ -89,7 +105,11 @@ class _ByCitiesTabState extends State<ByCitiesTab> {
                 readOnly: true,
               ),
               const SizedBox(height: 24.0),
-              const AppButton(),
+              AppButton(
+                onPressed: () {
+                  byCitiesSearchStackIndex.value = 1;
+                },
+              ),
             ],
           ),
         ),
