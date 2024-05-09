@@ -9,6 +9,12 @@ void main() async {
   // nPrefs = await SharedPreferences.getInstance();
   runApp(const MyApp());
 }
+@pragma('vm:entry-point')
+void screenAEntrypoint() {
+  runApp(const MaterialApp(
+    home: HomePage(),
+  ));
+}
 
 
 class MyApp extends StatelessWidget {
