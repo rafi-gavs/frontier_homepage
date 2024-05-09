@@ -8,20 +8,30 @@ import 'package:google_fonts/google_fonts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // nPrefs = await NativeSharedPreferences.getInstance();
-  runApp(const MyApp());
+  homePage();
 }
 
+void homePage() {
+  runApp(const MyApp(child: HomePage()));
+}
+
+void flightStatusPage() {
+  runApp(const MyApp(child: FlightStatusPage()));
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final Widget child;
+  const MyApp({
+    super.key,
+    required this.child,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Frontier Airlines',
-      home: FlightStatusPage(),
+      home: child,
     );
   }
 }
