@@ -5,10 +5,16 @@ import '../../../util/appcolor.dart';
 
 class AppTextField extends StatefulWidget {
   final String? initialValue;
+  final void Function()? onTap;
+  final bool readOnly;
+  final String? Function(String?)? validator;
 
   const AppTextField({
     super.key,
     this.initialValue,
+    this.onTap,
+    this.readOnly = false,
+    this.validator,
   });
 
   @override
@@ -26,30 +32,35 @@ class _AppTextFieldState extends State<AppTextField> {
       child: Row(
         children: [
           Expanded(
-            child: TextField(
+            child: TextFormField(
+              onTap: widget.onTap,
+              readOnly: widget.readOnly,
+              cursorWidth: 1.0,
+              cursorColor: AppColor.textFieldBorder,
               controller: TextEditingController(text: widget.initialValue),
+              validator: widget.validator,
               style: GoogleFonts.poppins(
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
                 color: AppColor.stringBlackColor,
               ),
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 isCollapsed: true,
                 isDense: true,
-                contentPadding: const EdgeInsets.symmetric(
+                contentPadding: EdgeInsets.symmetric(
                   horizontal: 16.0,
-                  vertical: 8.0,
+                  vertical: 6.0,
                 ),
                 filled: false,
               ),
             ),
           ),
-          Icon(
+          const Icon(
             Icons.keyboard_arrow_down,
             color: AppColor.btBg,
           ),
-          SizedBox(width: 8.0),
+          const SizedBox(width: 8.0),
         ],
       ),
     );

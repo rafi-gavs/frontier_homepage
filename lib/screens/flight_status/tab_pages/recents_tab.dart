@@ -4,29 +4,30 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../util/appcolor.dart';
 import '../components/recent_list_item.dart';
 
-class RecentsTab extends StatefulWidget {
-  const RecentsTab({super.key});
+class RecentTab extends StatefulWidget {
+  const RecentTab({super.key});
 
   @override
-  State<RecentsTab> createState() => _RecentsTabState();
+  State<RecentTab> createState() => _RecentTabState();
 }
 
-class _RecentsTabState extends State<RecentsTab> {
+class _RecentTabState extends State<RecentTab> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const RecentListItem(),
-            const RecentListItem(
-              number: 'F9 4444',
-            ),
-            _clear(),
-          ],
-        ),
+    return SingleChildScrollView(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const RecentListItem(
+            date: 'April 5th, 2024',
+          ),
+          const RecentListItem(
+            date: 'April 4th, 2024',
+            number: 'F9 4444',
+          ),
+          _clear(),
+        ],
       ),
     );
   }

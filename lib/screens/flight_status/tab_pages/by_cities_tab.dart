@@ -4,15 +4,16 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../util/appcolor.dart';
 import '../components/app_button.dart';
 import '../components/app_text_field.dart';
+import '../flight_status_page.dart';
 
-class MyCitiesTab extends StatefulWidget {
-  const MyCitiesTab({super.key});
+class ByCitiesTab extends StatefulWidget {
+  const ByCitiesTab({super.key});
 
   @override
-  State<MyCitiesTab> createState() => _MyCitiesTabState();
+  State<ByCitiesTab> createState() => _ByCitiesTabState();
 }
 
-class _MyCitiesTabState extends State<MyCitiesTab> {
+class _ByCitiesTabState extends State<ByCitiesTab> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -49,8 +50,12 @@ class _MyCitiesTabState extends State<MyCitiesTab> {
                 ),
               ),
               const SizedBox(height: 6.0),
-              const AppTextField(
+              AppTextField(
                 initialValue: 'Denver, CO (DEN)',
+                readOnly: true,
+                onTap: () {
+                  fsScaffoldKey.currentState!.openDrawer();
+                },
               ),
               const SizedBox(height: 16.0),
               Text(
@@ -62,8 +67,12 @@ class _MyCitiesTabState extends State<MyCitiesTab> {
                 ),
               ),
               const SizedBox(height: 6.0),
-              const AppTextField(
+              AppTextField(
                 initialValue: 'San, Diego, CA (SAN)',
+                readOnly: true,
+                onTap: () {
+                  fsScaffoldKey.currentState!.openDrawer();
+                },
               ),
               const SizedBox(height: 16.0),
               Text(
@@ -77,6 +86,7 @@ class _MyCitiesTabState extends State<MyCitiesTab> {
               const SizedBox(height: 6.0),
               const AppTextField(
                 initialValue: 'Friday, April 5th, 2024',
+                readOnly: true,
               ),
               const SizedBox(height: 24.0),
               const AppButton(),

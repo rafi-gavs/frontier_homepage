@@ -5,9 +5,11 @@ import '../../../util/appcolor.dart';
 
 class RecentListItem extends StatefulWidget {
   final String? number;
+  final String date;
   const RecentListItem({
     super.key,
     this.number,
+    required this.date,
   });
 
   @override
@@ -22,7 +24,7 @@ class _RecentListItemState extends State<RecentListItem> {
       children: [
         const SizedBox(height: 20.0),
         Text(
-          'April 5th, 2024',
+          widget.date,
           style: GoogleFonts.poppins(
             fontSize: 12,
             fontWeight: FontWeight.w500,
@@ -39,7 +41,7 @@ class _RecentListItemState extends State<RecentListItem> {
           ),
         ),
         Visibility(
-          visible: widget.number!=null,
+          visible: widget.number != null,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

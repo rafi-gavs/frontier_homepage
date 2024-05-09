@@ -18,6 +18,9 @@ class AppColor {
     static const fontSecondary=Color(0xFF504E4B);
     static const linkText=Color(0xFF007AA8);
     static const textFieldBorder=Color(0xFF9C9B98);
+    static const green=Color(0xFF006643);
+
+
 
    
 

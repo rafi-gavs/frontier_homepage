@@ -62,6 +62,7 @@ class _MyNumberTabState extends State<MyNumberTab> {
               const SizedBox(height: 6.0),
               const AppTextField(
                 initialValue: 'Friday, April 5th, 2024',
+                readOnly: true,
               ),
               const SizedBox(height: 16.0),
               const AppButton(),

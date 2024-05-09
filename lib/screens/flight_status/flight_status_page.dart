@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:frontier_homepage/screens/flight_status/tab_pages/by_number_tab.dart';
-import 'package:frontier_homepage/screens/flight_status/tab_pages/my_cities_tab.dart';
+import 'package:frontier_homepage/screens/flight_status/tab_pages/by_cities_tab.dart';
 import 'package:frontier_homepage/screens/flight_status/tab_pages/my_trips_tab.dart';
 import 'package:frontier_homepage/screens/flight_status/tab_pages/recents_tab.dart';
 import 'package:frontier_homepage/util/appstring.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../util/appcolor.dart';
+import 'components/fs_drawer.dart';
+
+final GlobalKey<ScaffoldState> fsScaffoldKey = GlobalKey();
 
 class FlightStatusPage extends StatefulWidget {
   const FlightStatusPage({super.key});
@@ -28,10 +31,12 @@ class _FlightStatusPageState extends State<FlightStatusPage> with SingleTickerPr
   }
 
   _tabListener() {
-    _tabController.addListener(() {
-      setState(() {
-        _currentTab = _tabController.index;
-      });
+    _tabController.animation?.addListener(() {
+      var value = (_tabController.animation?.value)!.round();
+      if (value != _currentTab) {
+        _currentTab = value;
+        setState(() {});
+      }
     });
   }
 
@@ -45,13 +50,18 @@ class _FlightStatusPageState extends State<FlightStatusPage> with SingleTickerPr
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: fsScaffoldKey,
+      resizeToAvoidBottomInset: false,
+      drawer: const FSDrawer(),
       backgroundColor: AppColor.bgCream,
       body: Column(
         children: [
+          const SizedBox(height: 8.0),
           Expanded(
             child: DefaultTabController(
               length: 4,
               child: Scaffold(
+                resizeToAvoidBottomInset: false,
                 backgroundColor: AppColor.bgCream,
                 appBar: AppBar(
                   backgroundColor: AppColor.bgCream,
@@ -70,7 +80,7 @@ class _FlightStatusPageState extends State<FlightStatusPage> with SingleTickerPr
                         controller: _tabController,
                         indicatorColor: Colors.transparent,
                         labelPadding: const EdgeInsets.symmetric(
-                          vertical: 10.0,
+                          vertical: 8.0,
                         ),
                         tabs: [
                           Container(
@@ -150,9 +160,9 @@ class _FlightStatusPageState extends State<FlightStatusPage> with SingleTickerPr
                   controller: _tabController,
                   children: const [
                     MyTripsTab(),
-                    MyCitiesTab(),
+                    ByCitiesTab(),
                     MyNumberTab(),
-                    RecentsTab(),
+                    RecentTab(),
                   ],
                 ),
               ),

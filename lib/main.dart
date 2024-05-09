@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontier_homepage/screens/flight_status/flight_status_page.dart';
 import 'package:frontier_homepage/screens/home_page.dart';
+import 'package:frontier_homepage/util/app_theme.dart';
 import 'package:google_fonts/google_fonts.dart';
 // import 'package:native_shared_preferences/native_shared_preferences.dart';
 
@@ -21,11 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Frontier Airlines',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        fontFamily: GoogleFonts.poppins().fontFamily,
-        useMaterial3: true,
-      ),
+      theme: AppTheme.light,
       home: const FlightStatusPage(),
     );
   }
