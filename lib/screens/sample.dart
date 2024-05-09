@@ -35,8 +35,8 @@ class _SamplePageState extends State<SamplePage> {
     return  Scaffold(
       body: SafeArea(
         child: SizedBox(
-          width: 150,
-          height: 200,
+          width: 350,
+          height: 400,
           child: Column(
             children: [
               TextButton(onPressed: (){
@@ -47,7 +47,14 @@ class _SamplePageState extends State<SamplePage> {
                 });
 
               }
-              , child: Text(updatedValue) )
+              , child: Text(updatedValue) ),
+
+              SizedBox(height: 50,),
+
+              Text(result??"no value",style: TextStyle(
+                fontSize: 50,
+              ),)
+
             ],
 
           ),
