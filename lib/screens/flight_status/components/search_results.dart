@@ -1,12 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:frontier_homepage/screens/flight_status/components/search_result_list_item.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../util/appcolor.dart';
-import '../tab_pages/by_cities_tab.dart';
 
 class SearchResults extends StatefulWidget {
-  const SearchResults({super.key});
+  final void Function()? onBackTap;
+  final String headerTitle;
+  const SearchResults({
+    super.key,
+    this.onBackTap,
+    required this.headerTitle,
+  });
 
   @override
   State<SearchResults> createState() => _SearchResultsState();
@@ -26,7 +32,7 @@ class _SearchResultsState extends State<SearchResults> {
           _header(),
           const SizedBox(height: 16.0),
           _resultFoundInfo(),
-          const SizedBox(height: 16.0),
+          const SizedBox(height: 24.0),
           _list(),
         ],
       ),
@@ -34,27 +40,26 @@ class _SearchResultsState extends State<SearchResults> {
   }
 
   Widget _header() {
-    return GestureDetector(
-      onTap: () {
-        byCitiesSearchStackIndex.value = 0;
-      },
-      child: Row(
-        children: [
-          const Icon(
-            Icons.arrow_back,
-            size: 20.0,
+    return Row(
+      children: [
+        GestureDetector(
+          onTap: widget.onBackTap,
+          child: Image.asset(
+            'assets/appimage/arrow_back_search_result.png',
+            height: 22.0,
+            width: 18.0,
           ),
-          const SizedBox(width: 8.0),
-          Text(
-            'Back to search',
-            style: GoogleFonts.poppins(
-              fontSize: 18.0,
-              fontWeight: FontWeight.w600,
-              color: AppColor.stringBlackColor,
-            ),
-          )
-        ],
-      ),
+        ),
+        const SizedBox(width: 16.0),
+        Text(
+          widget.headerTitle,
+          style: GoogleFonts.poppins(
+            fontSize: 18.0,
+            fontWeight: FontWeight.w600,
+            color: AppColor.stringBlackColor,
+          ),
+        )
+      ],
     );
   }
 

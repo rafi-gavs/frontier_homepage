@@ -3,7 +3,7 @@ import 'package:frontier_homepage/util/appcolor.dart';
 import 'package:frontier_homepage/util/appstring.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// import '../../../main.dart';
+import '../../../main.dart';
 
 class WelcomeCard extends StatefulWidget {
   const WelcomeCard({
@@ -21,11 +21,16 @@ class _WelcomeCardState extends State<WelcomeCard> {
   }
 
   // String _getName() {
-    // String? username = nPrefs.getString('username');
-  //   if (username == null) {
+  //   String? username;
+  //   if (nPrefs.containsKey('username')) {
+  //     username = nPrefs.getString('username');
+
+  //     if (username == null) {
+  //       return AppString.welcomeTheodore;
+  //     }
+  //   } else {
   //     return AppString.welcomeTheodore;
   //   }
-
   //   return 'Welcome $username';
   // }
 
@@ -33,23 +38,27 @@ class _WelcomeCardState extends State<WelcomeCard> {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(top:46.0,bottom: 65,left: 16,right: 16),
         child: Row(
           children: [
             Container(
-              height: MediaQuery.of(context).size.height * 0.15,
+             
               width: 5.0,
               decoration: const BoxDecoration(
                 color: AppColor.yellowColor,
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(8.0), bottomLeft: Radius.circular(8.0)),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(8.0),
+                    bottomLeft: Radius.circular(8.0)),
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height * 0.15,
+             
               width: MediaQuery.of(context).size.width * 0.89,
               decoration: const BoxDecoration(
                 color: AppColor.whiteColor,
-                borderRadius: BorderRadius.only(topRight: Radius.circular(8.0), bottomRight: Radius.circular(8.0)),
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(8.0),
+                    bottomRight: Radius.circular(8.0)),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -61,15 +70,22 @@ class _WelcomeCardState extends State<WelcomeCard> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                         AppString.welcomeTheodore,
-                          style: GoogleFonts.poppins(fontSize: 20.0, fontWeight: FontWeight.w700, color: AppColor.stringBlackColor),
+                        //  _getName(),
+                        AppString.welcomeTheodore,
+                          style: GoogleFonts.poppins(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w700,
+                              color: AppColor.stringBlackColor),
                         ),
                         const Icon(Icons.arrow_forward_ios_outlined)
                       ],
                     ),
                     Text(
                       AppString.miles,
-                      style: GoogleFonts.poppins(fontSize: 16.0, fontWeight: FontWeight.w400, color: AppColor.stringBlackColor),
+                      style: GoogleFonts.poppins(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w400,
+                          color: AppColor.stringBlackColor),
                     ),
                     Row(
                       children: [
@@ -81,7 +97,10 @@ class _WelcomeCardState extends State<WelcomeCard> {
                           width: 2,
                         ),
                         Text(AppString.eliteGold,
-                            style: GoogleFonts.poppins(fontSize: 14.0, fontWeight: FontWeight.w500, color: AppColor.stringBlackColor)),
+                            style: GoogleFonts.poppins(
+                                fontSize: 14.0,
+                                fontWeight: FontWeight.w500,
+                                color: AppColor.stringBlackColor)),
                       ],
                     )
                   ],

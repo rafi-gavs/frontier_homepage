@@ -116,7 +116,11 @@ class _FSDrawerState extends State<FSDrawer> {
       color: AppColor.bgCream,
       child: Text(
         title,
-        style: Theme.of(context).textTheme.bodySmall,
+        style: GoogleFonts.poppins(
+          fontSize: 14.0,
+          fontWeight: FontWeight.w600,
+          color: AppColor.fontSecondary,
+        ),
       ),
     );
   }
@@ -138,7 +142,11 @@ class _FSDrawerState extends State<FSDrawer> {
                       children: [
                         Text(
                           e,
-                          style: Theme.of(context).textTheme.bodyLarge,
+                          style: GoogleFonts.poppins(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w400,
+                            color: AppColor.stringBlackColor,
+                          ),
                         ),
                         const SizedBox(height: 12.0),
                         Container(
@@ -163,7 +171,11 @@ class _FSDrawerState extends State<FSDrawer> {
               const SizedBox(width: 10.0),
               Text(
                 'Current Location',
-                style: Theme.of(context).textTheme.bodyLarge,
+                style: GoogleFonts.poppins(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w400,
+                  color: AppColor.stringBlackColor,
+                ),
               ),
             ],
           ),
@@ -202,7 +214,11 @@ class _FSDrawerState extends State<FSDrawer> {
                       children: [
                         Text(
                           e,
-                          style: Theme.of(context).textTheme.bodyLarge,
+                          style: GoogleFonts.poppins(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w400,
+                            color: AppColor.stringBlackColor,
+                          ),
                         ),
                         const SizedBox(height: 12.0),
                         Container(
