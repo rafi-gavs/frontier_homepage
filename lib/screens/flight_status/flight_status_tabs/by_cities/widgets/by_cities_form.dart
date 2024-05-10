@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../../util/appcolor.dart';
+import '../../../../../util/global_variables.dart';
 import '../../../components/app_button.dart';
 import '../../../components/app_text_field.dart';
 import '../../../flight_status_page.dart';
@@ -35,9 +37,12 @@ class _ByCitiesFormState extends State<ByCitiesForm> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(bottom: 16.0),
-                child: SearchErrorMessage(),
+              Visibility(
+                visible: isLoggedIn,
+                child: const Padding(
+                  padding: EdgeInsets.only(bottom: 16.0),
+                  child: SearchErrorMessage(),
+                ),
               ),
               Text(
                 'Departure',
@@ -89,7 +94,7 @@ class _ByCitiesFormState extends State<ByCitiesForm> {
               const SizedBox(height: 24.0),
               AppButton(
                 onPressed: () {
-                  //byCitiesSearchStackIndex.value = 1;
+                  byCitiesSearchStackIndex.value = 1;
                 },
               ),
             ],

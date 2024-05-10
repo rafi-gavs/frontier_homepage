@@ -25,7 +25,11 @@ class _FlightStatusPageState extends State<FlightStatusPage> with SingleTickerPr
   @override
   void initState() {
     // TODO: implement initState
-    _tabController = TabController(vsync: this, length: 4);
+    _tabController = TabController(
+      vsync: this,
+      length: 4,
+      initialIndex: 1,
+    );
     _tabListener();
     super.initState();
   }
@@ -38,6 +42,18 @@ class _FlightStatusPageState extends State<FlightStatusPage> with SingleTickerPr
         setState(() {});
       }
     });
+  }
+
+  String _getTitle() {
+    if (_currentTab == 0) {
+      return 'My Trips';
+    } else if (_currentTab == 1) {
+      return 'Check Flight Status';
+    } else if (_currentTab == 2) {
+      return 'Check Flight Status';
+    } else {
+      return 'Recent Flight Searches';
+    }
   }
 
   @override
@@ -148,7 +164,7 @@ class _FlightStatusPageState extends State<FlightStatusPage> with SingleTickerPr
                     ),
                   ),
                   title: Text(
-                    AppString.checkFlightStatus,
+                    _getTitle(),
                     style: GoogleFonts.poppins(
                       fontSize: 20,
                       fontWeight: FontWeight.w700,

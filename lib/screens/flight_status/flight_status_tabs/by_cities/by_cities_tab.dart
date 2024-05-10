@@ -3,6 +3,7 @@ import 'package:frontier_homepage/screens/flight_status/flight_status_tabs/by_ci
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../util/appcolor.dart';
+import '../../../../util/global_variables.dart';
 import '../../components/app_button.dart';
 import '../../components/app_text_field.dart';
 import 'widgets/by_cities_form_error_view.dart';
@@ -17,9 +18,6 @@ class ByCitiesTab extends StatefulWidget {
 }
 
 class _ByCitiesTabState extends State<ByCitiesTab> {
-  ///Createded [ValueNotifier] variable [byCitiesSearchStackIndex] in [ByCitiesTab] to show result widget based on [IndexedStack] index
-  ValueNotifier<int> byCitiesSearchStackIndex = ValueNotifier(0);
-
   @override
   void dispose() {
     byCitiesSearchStackIndex.value = 0;
@@ -36,7 +34,7 @@ class _ByCitiesTabState extends State<ByCitiesTab> {
           return IndexedStack(
             index: index,
             children: [
-              _form(),
+              const ByCitiesForm(),
               SearchResults(
                 headerTitle: 'Back to search',
                 onBackTap: () {
@@ -48,9 +46,5 @@ class _ByCitiesTabState extends State<ByCitiesTab> {
         },
       ),
     );
-  }
-
-  Widget _form() {
-    return const ByCitiesForm();
   }
 }
