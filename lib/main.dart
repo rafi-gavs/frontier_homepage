@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:frontier_homepage/screens/flight_status/flight_status_page.dart';
 import 'package:frontier_homepage/screens/home_page.dart';
-import 'package:google_fonts/google_fonts.dart';
-// import 'package:native_shared_preferences/native_shared_preferences.dart';
 
-// late NativeSharedPreferences nPrefs;
+import 'package:google_fonts/google_fonts.dart';
+
+
+
 
 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // nPrefs = await NativeSharedPreferences.getInstance();
   runApp(const MyApp());
 }
 
