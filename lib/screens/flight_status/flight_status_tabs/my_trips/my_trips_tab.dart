@@ -1,40 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../util/appcolor.dart';
-import '../components/app_button.dart';
-import '../components/app_text_field.dart';
-import '../components/search_results.dart';
-import '../flight_status_page.dart';
+import '../../../../util/appcolor.dart';
+import '../../components/app_button.dart';
+import '../../components/app_text_field.dart';
+import 'widgets/my_trips_empty_view.dart';
+import '../../flight_status_page.dart';
 
-///Created global [ValueNotifier] variable [byCitiesSearchStackIndex] in [ByCitiesTab] to show result widget based on [IndexedStack] index
-ValueNotifier<int> byCitiesSearchStackIndex = ValueNotifier(0);
-
-class ByCitiesTab extends StatefulWidget {
-  const ByCitiesTab({super.key});
+class MyTripsTab extends StatefulWidget {
+  const MyTripsTab({super.key});
 
   @override
-  State<ByCitiesTab> createState() => _ByCitiesTabState();
+  State<MyTripsTab> createState() => _MyTripsTabState();
 }
 
-class _ByCitiesTabState extends State<ByCitiesTab> {
+class _MyTripsTabState extends State<MyTripsTab> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16.0,
+        vertical: 16.0,
+      ),
       color: AppColor.bgCream,
-      //child: _form(),
-      //child: SearchResults(),
-      child: ValueListenableBuilder<int>(
-          valueListenable: byCitiesSearchStackIndex,
-          builder: (context, index, _) {
-            return IndexedStack(
-              index: index,
-              children: [
-                _form(),
-                const SearchResults(),
-              ],
-            );
-          }),
+      child: _form(),
+      //child: const MyTripsEmptyView(),
     );
   }
 
@@ -67,7 +57,6 @@ class _ByCitiesTabState extends State<ByCitiesTab> {
               ),
               const SizedBox(height: 6.0),
               AppTextField(
-                initialValue: 'Denver, CO (DEN)',
                 readOnly: true,
                 onTap: () {
                   fsScaffoldKey.currentState!.openDrawer();
@@ -84,7 +73,6 @@ class _ByCitiesTabState extends State<ByCitiesTab> {
               ),
               const SizedBox(height: 6.0),
               AppTextField(
-                initialValue: 'San, Diego, CA (SAN)',
                 readOnly: true,
                 onTap: () {
                   fsScaffoldKey.currentState!.openDrawer();
@@ -101,15 +89,11 @@ class _ByCitiesTabState extends State<ByCitiesTab> {
               ),
               const SizedBox(height: 6.0),
               const AppTextField(
-                initialValue: 'Friday, April 5th, 2024',
                 readOnly: true,
+                initialValue: 'Friday, April 5th, 2024',
               ),
               const SizedBox(height: 24.0),
-              AppButton(
-                onPressed: () {
-                  byCitiesSearchStackIndex.value = 1;
-                },
-              ),
+              const AppButton(),
             ],
           ),
         ),

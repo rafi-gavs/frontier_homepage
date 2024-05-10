@@ -1,15 +1,20 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../util/appcolor.dart';
+import '../individual_search_result_page.dart';
 
 class RecentListItem extends StatefulWidget {
   final String? number;
   final String date;
+  final void Function()? onViewFlightTap;
   const RecentListItem({
     super.key,
     this.number,
     required this.date,
+    this.onViewFlightTap,
   });
 
   @override
@@ -58,13 +63,16 @@ class _RecentListItemState extends State<RecentListItem> {
           ),
         ),
         const SizedBox(height: 8.0),
-        Text(
-          'View Flights',
-          style: GoogleFonts.poppins(
-            fontSize: 12,
-            fontWeight: FontWeight.w600,
-            color: AppColor.linkText,
-            decoration: TextDecoration.underline,
+        GestureDetector(
+          onTap: widget.onViewFlightTap,
+          child: Text(
+            'View Flights',
+            style: GoogleFonts.poppins(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: AppColor.linkText,
+              decoration: TextDecoration.underline,
+            ),
           ),
         ),
         const SizedBox(height: 16.0),

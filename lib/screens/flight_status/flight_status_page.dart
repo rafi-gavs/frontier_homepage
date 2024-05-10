@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:frontier_homepage/screens/flight_status/tab_pages/by_number_tab.dart';
-import 'package:frontier_homepage/screens/flight_status/tab_pages/by_cities_tab.dart';
-import 'package:frontier_homepage/screens/flight_status/tab_pages/my_trips_tab.dart';
-import 'package:frontier_homepage/screens/flight_status/tab_pages/recents_tab.dart';
 import 'package:frontier_homepage/util/appstring.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../util/appcolor.dart';
 import 'components/fs_drawer.dart';
+import 'flight_status_tabs/by_cities/by_cities_tab.dart';
+import 'flight_status_tabs/by_number_tab.dart';
+import 'flight_status_tabs/my_trips/my_trips_tab.dart';
+import 'flight_status_tabs/recents_tab.dart';
 
 final GlobalKey<ScaffoldState> fsScaffoldKey = GlobalKey();
 
@@ -20,7 +20,7 @@ class FlightStatusPage extends StatefulWidget {
 
 class _FlightStatusPageState extends State<FlightStatusPage> with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  int _currentTab = 0;
+  int _currentTab = 1;
 
   @override
   void initState() {

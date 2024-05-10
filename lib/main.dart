@@ -6,12 +6,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 // late NativeSharedPreferences nPrefs;
 
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // nPrefs = await NativeSharedPreferences.getInstance();
   runApp(const MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

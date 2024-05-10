@@ -1,28 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../util/appcolor.dart';
-import '../components/app_button.dart';
-import '../components/app_text_field.dart';
-import '../flight_status_page.dart';
+import '../../../../../util/appcolor.dart';
+import '../../../components/app_button.dart';
+import '../../../components/app_text_field.dart';
+import '../../../flight_status_page.dart';
+import 'by_cities_form_error_view.dart';
 
-class MyTripsTab extends StatefulWidget {
-  const MyTripsTab({super.key});
+class ByCitiesForm extends StatefulWidget {
+  const ByCitiesForm({super.key});
 
   @override
-  State<MyTripsTab> createState() => _MyTripsTabState();
+  State<ByCitiesForm> createState() => _ByCitiesFormState();
 }
 
-class _MyTripsTabState extends State<MyTripsTab> {
+class _ByCitiesFormState extends State<ByCitiesForm> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColor.bgCream,
-      child: _form(),
-    );
-  }
-
-  Widget _form() {
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,6 +35,10 @@ class _MyTripsTabState extends State<MyTripsTab> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const Padding(
+                padding: EdgeInsets.only(bottom: 16.0),
+                child: SearchErrorMessage(),
+              ),
               Text(
                 'Departure',
                 style: GoogleFonts.poppins(
@@ -51,6 +49,7 @@ class _MyTripsTabState extends State<MyTripsTab> {
               ),
               const SizedBox(height: 6.0),
               AppTextField(
+                initialValue: 'Denver, CO (DEN)',
                 readOnly: true,
                 onTap: () {
                   fsScaffoldKey.currentState!.openDrawer();
@@ -67,6 +66,7 @@ class _MyTripsTabState extends State<MyTripsTab> {
               ),
               const SizedBox(height: 6.0),
               AppTextField(
+                initialValue: 'San, Diego, CA (SAN)',
                 readOnly: true,
                 onTap: () {
                   fsScaffoldKey.currentState!.openDrawer();
@@ -83,11 +83,15 @@ class _MyTripsTabState extends State<MyTripsTab> {
               ),
               const SizedBox(height: 6.0),
               const AppTextField(
-                readOnly: true,
                 initialValue: 'Friday, April 5th, 2024',
+                readOnly: true,
               ),
               const SizedBox(height: 24.0),
-              const AppButton(),
+              AppButton(
+                onPressed: () {
+                  //byCitiesSearchStackIndex.value = 1;
+                },
+              ),
             ],
           ),
         ),
