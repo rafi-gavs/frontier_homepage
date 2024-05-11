@@ -1,10 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../util/appcolor.dart';
-import '../individual_search_result_page.dart';
+import '../../../../../util/appcolor.dart';
 
 class RecentListItem extends StatefulWidget {
   final String? number;

@@ -22,4 +22,5 @@ class AppColor {
   static const chipsColor = Color(0XFFF4FAEE);
   static const grey = Color(0XFF71706D);
   static const toastErrorBgColor = Color(0XFFFDEDEB);
+  static const inputFieldError=Color(0xFFE94D35);
 }

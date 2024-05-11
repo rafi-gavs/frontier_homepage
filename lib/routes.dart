@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:frontier_homepage/screens/flight_status/flight_status_page.dart';
 import 'package:frontier_homepage/screens/home_page.dart';
 
+import 'screens/flight_status/individual_search_result_page.dart';
+
 class Routes {
   static const home = '/';
   static const flightStatus = 'flight_status';
-
+  static const flightStatusIndividualResult = 'flight_status_individual_result';
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => const HomePage());
       case 'flight_status':
         return MaterialPageRoute(builder: (_) => const FlightStatusPage());
+      case 'flight_status_individual_result':
+        return MaterialPageRoute(builder: (_) => const IndividualSearchResultPage());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

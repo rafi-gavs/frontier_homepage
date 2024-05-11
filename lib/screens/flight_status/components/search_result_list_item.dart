@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:frontier_homepage/util/appcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../individual_search_result_page.dart';
-
 class SearchResultListItem extends StatelessWidget {
+  final void Function()? onTap;
   final String flightNumber;
   final String badgeOption;
   final String departTime;
@@ -24,19 +22,14 @@ class SearchResultListItem extends StatelessWidget {
     required this.arriveTo,
     this.connectionFrom,
     this.connectionTo,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const IndividualSearchResultPage()),
-        );
-      },
+      onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.only(bottom: 24.0),
         padding: const EdgeInsets.symmetric(
           horizontal: 20.0,
           vertical: 20.0,

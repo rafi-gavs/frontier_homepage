@@ -3,17 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:frontier_homepage/util/appcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../main.dart';
 import '../../../../../util/global_variables.dart';
 
-class MyTripsEmptyView extends StatefulWidget {
-  const MyTripsEmptyView({super.key});
+class MyTripsEmpty extends StatefulWidget {
+  const MyTripsEmpty({super.key});
 
   @override
-  State<MyTripsEmptyView> createState() => _MyTripsEmptyViewState();
+  State<MyTripsEmpty> createState() => _MyTripsEmptyState();
 }
 
-class _MyTripsEmptyViewState extends State<MyTripsEmptyView> {
+class _MyTripsEmptyState extends State<MyTripsEmpty> {
   @override
   Widget build(BuildContext context) {
     return RichText(

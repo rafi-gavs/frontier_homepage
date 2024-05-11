@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../../util/appcolor.dart';
 
-class SearchErrorMessage extends StatelessWidget {
-  const SearchErrorMessage({super.key});
+class ByCitiesFormError extends StatelessWidget {
+  const ByCitiesFormError({super.key});
 
   @override
   Widget build(BuildContext context) {
