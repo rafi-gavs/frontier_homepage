@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Frontier Airlines',
       onGenerateRoute: Routes.generateRoute,
-      initialRoute:Routes.flightStatus,
+      initialRoute:Routes.home,
     );
   }
 }
