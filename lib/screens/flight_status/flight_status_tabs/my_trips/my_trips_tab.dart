@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../util/appcolor.dart';
 import '../../../../util/global_variables.dart';
-import '../../components/app_button.dart';
-import '../../components/app_text_field.dart';
-import 'widgets/my_trips_empty_view.dart';
-import '../../flight_status_page.dart';
+import 'widgets/my_trips_empty.dart';
+import 'widgets/my_trips_list_details.dart';
+import 'widgets/my_trips_list.dart';
 
 class MyTripsTab extends StatefulWidget {
   const MyTripsTab({super.key});
@@ -16,19 +14,34 @@ class MyTripsTab extends StatefulWidget {
 }
 
 class _MyTripsTabState extends State<MyTripsTab> {
+  bool isListEmpty = true;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 16.0,
-        vertical: 16.0,
       ),
       color: AppColor.bgCream,
-      //child: _form(),
       child: Visibility(
-        visible: isLoggedIn,
-        replacement: const MyTripsEmptyView(),
-        child: const SizedBox(),
+        visible: !isListEmpty,
+        replacement: const Padding(
+          padding: EdgeInsets.only(top: 16.0),
+          child: MyTripsEmpty(),
+        ),
+        //child: const MyTripsListView(),
+        child: ValueListenableBuilder(
+          valueListenable: myTripsViewStackIndex,
+          builder: (context, index, _) {
+            return IndexedStack(
+              index: index,
+              children: const [
+                MyTripsList(),
+                MyTripsListDetails(),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

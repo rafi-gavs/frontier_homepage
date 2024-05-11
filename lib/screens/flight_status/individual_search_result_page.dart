@@ -42,10 +42,10 @@ class _IndividualSearchResultPageState extends State<IndividualSearchResultPage>
         children: [
           Image.asset(
             'assets/appimage/arrow_back.png',
-            height: 28.0,
-            width: 28.0,
+            height: 24.0,
+            width: 24.0,
           ),
-          const SizedBox(width: 8.0),
+          const SizedBox(width: 20.0),
           Text(
             'Back to results',
             style: GoogleFonts.poppins(

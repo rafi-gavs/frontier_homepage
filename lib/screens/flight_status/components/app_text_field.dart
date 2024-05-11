@@ -8,6 +8,7 @@ class AppTextField extends StatefulWidget {
   final void Function()? onTap;
   final bool readOnly;
   final String? Function(String?)? validator;
+  final TextEditingController? controller;
 
   const AppTextField({
     super.key,
@@ -15,6 +16,7 @@ class AppTextField extends StatefulWidget {
     this.onTap,
     this.readOnly = false,
     this.validator,
+    this.controller,
   });
 
   @override
@@ -24,44 +26,45 @@ class AppTextField extends StatefulWidget {
 class _AppTextFieldState extends State<AppTextField> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(4.0),
-        border: Border.all(color: AppColor.textFieldBorder),
+    return TextFormField(
+      initialValue: widget.initialValue,
+      onTap: widget.onTap,
+      readOnly: widget.readOnly,
+      cursorWidth: 1.0,
+      cursorColor: AppColor.textFieldBorder,
+      controller: widget.controller,
+      validator: widget.validator,
+      style: GoogleFonts.poppins(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: AppColor.stringBlackColor,
       ),
-      child: Row(
-        children: [
-          Expanded(
-            child: TextFormField(
-              onTap: widget.onTap,
-              readOnly: widget.readOnly,
-              cursorWidth: 1.0,
-              cursorColor: AppColor.textFieldBorder,
-              controller: TextEditingController(text: widget.initialValue),
-              validator: widget.validator,
-              style: GoogleFonts.poppins(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-                color: AppColor.stringBlackColor,
-              ),
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                isCollapsed: true,
-                isDense: true,
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 16.0,
-                  vertical: 6.0,
-                ),
-                filled: false,
-              ),
-            ),
+      decoration: InputDecoration(
+        border: const OutlineInputBorder(),
+        isCollapsed: true,
+        isDense: true,
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16.0,
+          vertical: 6.0,
+        ),
+        errorStyle: GoogleFonts.poppins(
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          color: AppColor.inputFieldError,
+        ),
+        filled: false,
+        suffixIconConstraints: const BoxConstraints(
+          minHeight: 16.0,
+          minWidth: 16.0,
+        ),
+        suffixIcon: Padding(
+          padding: const EdgeInsets.only(right: 16.0),
+          child: Image.asset(
+            'assets/appimage/arrow_down.png',
+            height: 16.0,
+            width: 16.0,
           ),
-          const Icon(
-            Icons.keyboard_arrow_down,
-            color: AppColor.btBg,
-          ),
-          const SizedBox(width: 8.0),
-        ],
+        ),
       ),
     );
   }

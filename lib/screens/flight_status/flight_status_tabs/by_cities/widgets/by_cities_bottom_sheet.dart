@@ -1,42 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:frontier_homepage/screens/flight_status/flight_status_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../util/appcolor.dart';
+import '../../../../../util/appcolor.dart';
 
-class FSDrawer extends StatefulWidget {
-  const FSDrawer({super.key});
+class ByCitiesBottomSheet extends StatefulWidget {
+  const ByCitiesBottomSheet({super.key});
 
   @override
-  State<FSDrawer> createState() => _FSDrawerState();
+  State<ByCitiesBottomSheet> createState() => _ByCitiesBottomSheetState();
 }
 
-class _FSDrawerState extends State<FSDrawer> {
+class _ByCitiesBottomSheetState extends State<ByCitiesBottomSheet> {
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.zero,
-      ),
-      child: SafeArea(
-        child: Column(
-          children: [
-            _closeButton(),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    _searchBar(),
-                    _recentSection(),
-                    const SizedBox(height: 12.0),
-                    _allAirportsSection(),
-                  ],
-                ),
-              ),
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        _closeButton(),
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                _searchBar(),
+                _recentSection(),
+                const SizedBox(height: 12.0),
+                _allAirportsSection(),
+              ],
             ),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 
@@ -49,7 +42,7 @@ class _FSDrawerState extends State<FSDrawer> {
         children: [
           GestureDetector(
             onTap: () {
-              fsScaffoldKey.currentState?.closeDrawer();
+              Navigator.pop(context);
             },
             child: const Icon(
               Icons.clear_rounded,
@@ -135,26 +128,31 @@ class _FSDrawerState extends State<FSDrawer> {
           primary: false,
           shrinkWrap: true,
           children: ['Denver, CO (DEN)', 'San Diego, CA (SAN)']
-              .map((e) => Container(
-                    margin: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 12.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          e,
-                          style: GoogleFonts.poppins(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.w400,
-                            color: AppColor.stringBlackColor,
+              .map((e) => GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context, e);
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 12.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            e,
+                            style: GoogleFonts.poppins(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w400,
+                              color: AppColor.stringBlackColor,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 12.0),
-                        Container(
-                          width: double.infinity,
-                          height: 1.0,
-                          color: AppColor.borderColor,
-                        ),
-                      ],
+                          const SizedBox(height: 12.0),
+                          Container(
+                            width: double.infinity,
+                            height: 1.0,
+                            color: AppColor.borderColor,
+                          ),
+                        ],
+                      ),
                     ),
                   ))
               .toList(),
@@ -207,26 +205,31 @@ class _FSDrawerState extends State<FSDrawer> {
             'Chicago (Midway), IL (MDW)',
             'Chicago (O’Hare), IL (ORD)'
           ]
-              .map((e) => Container(
-                    margin: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 12.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          e,
-                          style: GoogleFonts.poppins(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.w400,
-                            color: AppColor.stringBlackColor,
+              .map((e) => GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context, e);
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 12.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            e,
+                            style: GoogleFonts.poppins(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w400,
+                              color: AppColor.stringBlackColor,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 12.0),
-                        Container(
-                          width: double.infinity,
-                          height: 1.0,
-                          color: AppColor.borderColor,
-                        ),
-                      ],
+                          const SizedBox(height: 12.0),
+                          Container(
+                            width: double.infinity,
+                            height: 1.0,
+                            color: AppColor.borderColor,
+                          ),
+                        ],
+                      ),
                     ),
                   ))
               .toList(),

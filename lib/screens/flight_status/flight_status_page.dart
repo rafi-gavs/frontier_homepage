@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:frontier_homepage/util/appstring.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../util/appcolor.dart';
-import 'components/fs_drawer.dart';
+import 'flight_status_tabs/by_cities/widgets/by_cities_bottom_sheet.dart';
 import 'flight_status_tabs/by_cities/by_cities_tab.dart';
-import 'flight_status_tabs/by_number_tab.dart';
+import 'flight_status_tabs/by_number/by_number_tab.dart';
 import 'flight_status_tabs/my_trips/my_trips_tab.dart';
-import 'flight_status_tabs/recents_tab.dart';
+import 'flight_status_tabs/recents/recents_tab.dart';
 
 final GlobalKey<ScaffoldState> fsScaffoldKey = GlobalKey();
 
@@ -68,7 +67,7 @@ class _FlightStatusPageState extends State<FlightStatusPage> with SingleTickerPr
     return Scaffold(
       key: fsScaffoldKey,
       resizeToAvoidBottomInset: false,
-      drawer: const FSDrawer(),
+      drawer: const ByCitiesBottomSheet(),
       backgroundColor: AppColor.bgCream,
       body: Column(
         children: [
