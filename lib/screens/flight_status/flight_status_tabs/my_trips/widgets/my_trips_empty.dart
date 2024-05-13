@@ -1,9 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:frontier_homepage/util/appcolor.dart';
+import 'package:frontier_homepage/utils/appcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../util/global_variables.dart';
+import '../../../../../utils/global_variables.dart';
 
 class MyTripsEmpty extends StatefulWidget {
   const MyTripsEmpty({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../routes.dart';
-import '../../../../../util/global_variables.dart';
+import '../../../../../utils/global_variables.dart';
 import '../../../components/search_result_header.dart';
 import '../../../components/search_result_list_item.dart';
 

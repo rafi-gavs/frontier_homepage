@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:frontier_homepage/screens/flight_status/flight_status_tabs/by_cities/widgets/by_cities_form.dart';
 
-import '../../../../util/appcolor.dart';
-import '../../../../util/global_variables.dart';
+import '../../../../utils/appcolor.dart';
+import '../../../../utils/global_variables.dart';
 import 'widgets/by_cities_search_result.dart';
 
 class ByCitiesTab extends StatefulWidget {

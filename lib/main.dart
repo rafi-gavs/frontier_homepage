@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:frontier_homepage/routes.dart';
-import 'package:frontier_homepage/screens/flight_status/flight_status_page.dart';
-import 'package:frontier_homepage/screens/home_page.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-
-
-
+import 'package:frontier_homepage/utils/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({
@@ -21,11 +14,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
+      theme: ThemeData(),
       debugShowCheckedModeBanner: false,
       title: 'Frontier Airlines',
       onGenerateRoute: Routes.generateRoute,
-      initialRoute:Routes.home,
+      initialRoute: Routes.home,
     );
   }
 }

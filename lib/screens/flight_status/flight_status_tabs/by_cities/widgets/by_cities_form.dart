@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:frontier_homepage/screens/flight_status/flight_status_tabs/by_cities/widgets/by_cities_bottom_sheet.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../util/appcolor.dart';
-import '../../../../../util/global_variables.dart';
+import '../../../../../utils/appcolor.dart';
+import '../../../../../utils/global_variables.dart';
 import '../../../components/app_button.dart';
 import '../../../components/app_text_field.dart';
 import 'by_cities_form_error.dart';

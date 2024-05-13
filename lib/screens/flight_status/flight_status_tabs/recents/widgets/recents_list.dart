@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../util/appcolor.dart';
-import '../../../../../util/global_variables.dart';
+import '../../../../../utils/appcolor.dart';
+import '../../../../../utils/global_variables.dart';
 import 'recent_list_item.dart';
 
 class RecentsList extends StatefulWidget {

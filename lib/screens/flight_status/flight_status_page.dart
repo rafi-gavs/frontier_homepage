@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../util/appcolor.dart';
+import '../../utils/appcolor.dart';
 import 'flight_status_tabs/by_cities/widgets/by_cities_bottom_sheet.dart';
 import 'flight_status_tabs/by_cities/by_cities_tab.dart';
 import 'flight_status_tabs/by_number/by_number_tab.dart';

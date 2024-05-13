@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../util/appcolor.dart';
-import '../../../../util/global_variables.dart';
+import '../../../../utils/appcolor.dart';
+import '../../../../utils/global_variables.dart';
 import 'widgets/my_trips_empty.dart';
 import 'widgets/my_trips_list_details.dart';
 import 'widgets/my_trips_list.dart';

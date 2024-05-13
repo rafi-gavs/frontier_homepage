@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:frontier_homepage/cms_service/sanity_api.dart';
-import 'package:frontier_homepage/util/appcolor.dart';
+import 'package:frontier_homepage/services/cms_service/sanity_api.dart';
+import 'package:frontier_homepage/utils/appcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../util/appstring.dart';
-import 'home/components/checking_info_card.dart';
-import 'home/flight_details_widget/destination_detail_card.dart';
-import 'home/flight_details_widget/flight_details_widget.dart';
-import 'home/components/gowild_widget.dart';
-import 'home/components/offercard_widget.dart';
-import 'home/components/recent_search_list.dart';
-import 'home/components/savebig_widget.dart';
-import 'home/components/welcome_card.dart';
+import '../../utils/appstring.dart';
+import 'components/checking_info_card.dart';
+import 'flight_details_widget/destination_detail_card.dart';
+import 'flight_details_widget/flight_details_widget.dart';
+import 'components/gowild_widget.dart';
+import 'components/offercard_widget.dart';
+import 'components/recent_search_list.dart';
+import 'components/savebig_widget.dart';
+import 'components/welcome_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

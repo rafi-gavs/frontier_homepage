@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:frontier_homepage/util/global_variables.dart';
+import 'package:frontier_homepage/utils/global_variables.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../util/appcolor.dart';
+import '../../../../utils/appcolor.dart';
 import 'widgets/recents_list.dart';
 import 'widgets/recents_searches_view_flights.dart';
 

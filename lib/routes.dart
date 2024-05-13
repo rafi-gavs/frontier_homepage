@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frontier_homepage/screens/flight_status/flight_status_page.dart';
-import 'package:frontier_homepage/screens/home_page.dart';
-
-import 'screens/flight_status/individual_search_result_page.dart';
+import 'package:frontier_homepage/screens/flight_status_page/flight_status_page.dart';
+import 'package:frontier_homepage/screens/home_page/home_page.dart';
+import 'screens/flight_status_page/individual_search_result_page.dart';
 
 class Routes {
   static const home = '/';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../util/appcolor.dart';
+import '../../../utils/appcolor.dart';
 
 class SearchResultHeader extends StatelessWidget {
   final void Function()? onBackTap;

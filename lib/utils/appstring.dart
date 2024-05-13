@@ -17,4 +17,12 @@ class AppString {
   static const manage = 'Manage';
   static const viewBordingPass = 'View Boarding Pass';
   static const checkFlightStatus='Check Flight Status';
+  static const loginOrJoinNow = 'Login or Join Now';
+  static const alreadyBookedYourTrip = 'Already Booked Your Trip?';
+  static const  lowfaresToTheBestDestinations = ' Low fares to the best destinations';
+
+ 
+
+
+
 }
