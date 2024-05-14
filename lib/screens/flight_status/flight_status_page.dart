@@ -72,6 +72,7 @@ class _FlightStatusPageState extends State<FlightStatusPage> with SingleTickerPr
       drawer: const ByCitiesBottomSheet(),
       backgroundColor: AppColor.bgCream,
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 8.0),
           Expanded(

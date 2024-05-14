@@ -20,7 +20,7 @@ class _RecentsSearchesViewFlightsState extends State<RecentsSearchesViewFlights>
         const SizedBox(height: 24.0),
         SearchResultHeader(
           title: 'DEN to SAN',
-          lastRefreshedDate: '3/13/24 2:32 PM',
+          lastRefreshedDate: '5/14/24 6:02 PM',
           onBackTap: () {
             recentsViewStackIndex.value = 0;
           },

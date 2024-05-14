@@ -20,7 +20,7 @@ class _ByCitiesSearchResultState extends State<ByCitiesSearchResult> {
         const SizedBox(height: 24.0),
         SearchResultHeader(
           title: 'Back to search',
-          lastRefreshedDate: '3/13/24 2:32 PM',
+          lastRefreshedDate: '5/14/24 6:02 PM',
           onBackTap: () {
             byCitiesViewStackIndex.value = 0;
           },

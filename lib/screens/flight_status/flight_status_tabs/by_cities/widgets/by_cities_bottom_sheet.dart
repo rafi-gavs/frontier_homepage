@@ -11,6 +11,31 @@ class ByCitiesBottomSheet extends StatefulWidget {
 }
 
 class _ByCitiesBottomSheetState extends State<ByCitiesBottomSheet> {
+  final ValueNotifier<int> _searchResultViewIndex = ValueNotifier(0);
+
+  List<String> _searchResultList = [];
+
+  final List<String> _allAirportList = [
+    'Atlanta, GA (ATL)',
+    'Austin, TX (AUS)',
+    'Baltimore, MD (BWI)',
+    'Bentonville, AR (XNA)',
+    'Bloomington, IL (BMI)',
+    'Boston, MA (BOS)',
+    'Buffalo, NY (BUE)',
+    'Cedar Rapids, IA (CID)',
+    'Charleston, SC (CHS)',
+    'Charlotte, NC (CLT)',
+    'Chicago (Midway), IL (MDW)',
+    'Chicago (O’Hare), IL (ORD)'
+  ];
+
+  @override
+  void dispose() {
+    _searchResultViewIndex.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -22,9 +47,31 @@ class _ByCitiesBottomSheetState extends State<ByCitiesBottomSheet> {
             child: Column(
               children: [
                 _searchBar(),
-                _recentSection(),
-                const SizedBox(height: 12.0),
-                _allAirportsSection(),
+                ValueListenableBuilder<int>(
+                  valueListenable: _searchResultViewIndex,
+                  builder: (context, index, _) {
+                    return IndexedStack(
+                      index: index,
+                      children: [
+                        //initial views
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _recentSection(),
+                            const SizedBox(height: 12.0),
+                            _allAirportsSection(),
+                          ],
+                        ),
+
+                        //search results
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: _searchResultList.map((e) => _listItem(e)).toList(),
+                        ),
+                      ],
+                    );
+                  },
+                ),
               ],
             ),
           ),
@@ -76,7 +123,6 @@ class _ByCitiesBottomSheetState extends State<ByCitiesBottomSheet> {
           ),
           Expanded(
             child: TextField(
-              controller: TextEditingController(text: ''),
               style: GoogleFonts.poppins(
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
@@ -92,6 +138,19 @@ class _ByCitiesBottomSheetState extends State<ByCitiesBottomSheet> {
                 ),
                 filled: false,
               ),
+              onChanged: (value) {
+                if (value.isEmpty) {
+                  _searchResultList.clear();
+                  _searchResultViewIndex.value = 0;
+                } else {
+                  _searchResultList.clear();
+                  _searchResultList = _allAirportList.where((element) => element.toLowerCase().contains(value.toLowerCase())).toList();
+                  if (_searchResultList.isNotEmpty) {
+                    _searchResultViewIndex.value = 1;
+                  }
+                  setState(() {});
+                }
+              },
             ),
           ),
         ],
@@ -127,35 +186,7 @@ class _ByCitiesBottomSheetState extends State<ByCitiesBottomSheet> {
         ListView(
           primary: false,
           shrinkWrap: true,
-          children: ['Denver, CO (DEN)', 'San Diego, CA (SAN)']
-              .map((e) => GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context, e);
-                    },
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 12.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            e,
-                            style: GoogleFonts.poppins(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w400,
-                              color: AppColor.stringBlackColor,
-                            ),
-                          ),
-                          const SizedBox(height: 12.0),
-                          Container(
-                            width: double.infinity,
-                            height: 1.0,
-                            color: AppColor.borderColor,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ))
-              .toList(),
+          children: ['Denver, CO (DEN)', 'San Diego, CA (SAN)'].map((e) => _listItem(e)).toList(),
         ),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -191,50 +222,41 @@ class _ByCitiesBottomSheetState extends State<ByCitiesBottomSheet> {
         ListView(
           primary: false,
           shrinkWrap: true,
-          children: [
-            'Atlanta, GA (ATL)',
-            'Austin, TX (AUS)',
-            'Baltimore, MD (BWI)',
-            'Bentonville, AR (XNA)',
-            'Bloomington, IL (BMI)',
-            'Boston, MA (BOS)',
-            'Buffalo, NY (BUE)',
-            'Cedar Rapids, IA (CID)',
-            'Charleston, SC (CHS)',
-            'Charlotte, NC (CLT)',
-            'Chicago (Midway), IL (MDW)',
-            'Chicago (O’Hare), IL (ORD)'
-          ]
-              .map((e) => GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context, e);
-                    },
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 12.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            e,
-                            style: GoogleFonts.poppins(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w400,
-                              color: AppColor.stringBlackColor,
-                            ),
-                          ),
-                          const SizedBox(height: 12.0),
-                          Container(
-                            width: double.infinity,
-                            height: 1.0,
-                            color: AppColor.borderColor,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ))
-              .toList(),
+          children: _allAirportList.map((e) => _listItem(e)).toList(),
         ),
       ],
+    );
+  }
+
+  Widget _listItem(String value) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pop(context, value);
+      },
+      child: Container(
+        color: Colors.transparent,
+        width: double.infinity,
+        margin: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              value,
+              style: GoogleFonts.poppins(
+                fontSize: 16.0,
+                fontWeight: FontWeight.w400,
+                color: AppColor.stringBlackColor,
+              ),
+            ),
+            const SizedBox(height: 12.0),
+            Container(
+              width: double.infinity,
+              height: 1.0,
+              color: AppColor.borderColor,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

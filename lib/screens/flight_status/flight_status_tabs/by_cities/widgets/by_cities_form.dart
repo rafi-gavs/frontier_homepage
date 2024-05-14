@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:frontier_homepage/screens/flight_status/flight_status_tabs/by_cities/widgets/by_cities_bottom_sheet.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,6 +17,8 @@ class ByCitiesForm extends StatefulWidget {
 }
 
 class _ByCitiesFormState extends State<ByCitiesForm> with TickerProviderStateMixin {
+  final DateTime _selectedDate = DateTime.now();
+  final double _kPickerSheetHeight = 216.0;
   final _formKey = GlobalKey<FormState>();
   late TextEditingController _departure;
   late TextEditingController _arrival;
@@ -26,7 +29,7 @@ class _ByCitiesFormState extends State<ByCitiesForm> with TickerProviderStateMix
   late AnimationController _formAnimationController;
   late Animation<Offset> _formAnimation;
 
-  bool _isError = true;
+  bool _isError = false;
   bool _showErrorView = false;
 
   @override
@@ -192,9 +195,29 @@ class _ByCitiesFormState extends State<ByCitiesForm> with TickerProviderStateMix
                           ),
                         ),
                         const SizedBox(height: 6.0),
-                        const AppTextField(
-                          initialValue: 'Friday, April 5th, 2024',
+                        AppTextField(
+                          initialValue: 'Friday, May 14th, 2024',
                           readOnly: true,
+                          onTap: () {
+                            showCupertinoModalPopup<void>(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return _buildBottomPicker(
+                                  CupertinoDatePicker(
+                                    showDayOfWeek: true,
+                                    maximumDate: _selectedDate.add(
+                                      const Duration(days: 1),
+                                    ),
+                                    minimumDate: _selectedDate.subtract(
+                                      const Duration(days: 1),
+                                    ),
+                                    initialDateTime: _selectedDate,
+                                    onDateTimeChanged: (DateTime newDateTime) {},
+                                  ),
+                                );
+                              },
+                            );
+                          },
                         ),
                         const SizedBox(height: 24.0),
                         AppButton(
@@ -228,6 +251,28 @@ class _ByCitiesFormState extends State<ByCitiesForm> with TickerProviderStateMix
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBottomPicker(Widget picker) {
+    return Container(
+      height: _kPickerSheetHeight,
+      padding: const EdgeInsets.only(top: 6.0),
+      color: CupertinoColors.systemGrey3,
+      child: DefaultTextStyle(
+        style: const TextStyle(
+          color: CupertinoColors.black,
+          fontSize: 22.0,
+        ),
+        child: GestureDetector(
+          // Blocks taps from propagating to the modal sheet and popping.
+          onTap: () {},
+          child: SafeArea(
+            top: false,
+            child: picker,
+          ),
         ),
       ),
     );

@@ -66,7 +66,7 @@ class _ByNumberFormState extends State<ByNumberForm> {
               ),
               const SizedBox(height: 6.0),
               AppTextField(
-                initialValue: 'Friday, April 5th, 2024',
+                initialValue: 'Friday, May 14th, 2024',
                 readOnly: true,
                 onTap: () {
                   showCupertinoModalPopup<void>(
@@ -81,7 +81,6 @@ class _ByNumberFormState extends State<ByNumberForm> {
                           minimumDate: _selectedDate.subtract(
                             const Duration(days: 1),
                           ),
-                          mode: CupertinoDatePickerMode.date,
                           initialDateTime: _selectedDate,
                           onDateTimeChanged: (DateTime newDateTime) {},
                         ),
