@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../util/appcolor.dart';
@@ -98,63 +100,71 @@ class _FlightStatusPageState extends State<FlightStatusPage> with SingleTickerPr
                           vertical: 8.0,
                         ),
                         tabs: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
-                            decoration: BoxDecoration(
-                              color: _currentTab == 0 ? Colors.white : Colors.transparent,
-                              borderRadius: BorderRadius.circular(4.0),
-                            ),
-                            child: Text(
-                              'My Trips',
-                              style: GoogleFonts.poppins(
-                                fontSize: 12,
-                                fontWeight: _currentTab == 0 ? FontWeight.w600 : FontWeight.w500,
-                                color: AppColor.stringBlackColor,
+                          FittedBox(
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
+                              decoration: BoxDecoration(
+                                color: _currentTab == 0 ? Colors.white : Colors.transparent,
+                                borderRadius: BorderRadius.circular(4.0),
+                              ),
+                              child: Text(
+                                'My Trips',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 12,
+                                  fontWeight: _currentTab == 0 ? FontWeight.w600 : FontWeight.w500,
+                                  color: AppColor.stringBlackColor,
+                                ),
                               ),
                             ),
                           ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
-                            decoration: BoxDecoration(
-                              color: _currentTab == 1 ? Colors.white : Colors.transparent,
-                              borderRadius: BorderRadius.circular(4.0),
-                            ),
-                            child: Text(
-                              'By Cities',
-                              style: GoogleFonts.poppins(
-                                fontSize: 12,
-                                fontWeight: _currentTab == 1 ? FontWeight.w600 : FontWeight.w500,
-                                color: AppColor.stringBlackColor,
+                          FittedBox(
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
+                              decoration: BoxDecoration(
+                                color: _currentTab == 1 ? Colors.white : Colors.transparent,
+                                borderRadius: BorderRadius.circular(4.0),
+                              ),
+                              child: Text(
+                                'By Cities',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 12,
+                                  fontWeight: _currentTab == 1 ? FontWeight.w600 : FontWeight.w500,
+                                  color: AppColor.stringBlackColor,
+                                ),
                               ),
                             ),
                           ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
-                            decoration: BoxDecoration(
-                              color: _currentTab == 2 ? Colors.white : Colors.transparent,
-                              borderRadius: BorderRadius.circular(4.0),
-                            ),
-                            child: Text(
-                              'By Number',
-                              style: GoogleFonts.poppins(
-                                fontSize: 12,
-                                fontWeight: _currentTab == 2 ? FontWeight.w600 : FontWeight.w500,
-                                color: AppColor.stringBlackColor,
+                          FittedBox(
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
+                              decoration: BoxDecoration(
+                                color: _currentTab == 2 ? Colors.white : Colors.transparent,
+                                borderRadius: BorderRadius.circular(4.0),
+                              ),
+                              child: Text(
+                                'By Number',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 12,
+                                  fontWeight: _currentTab == 2 ? FontWeight.w600 : FontWeight.w500,
+                                  color: AppColor.stringBlackColor,
+                                ),
                               ),
                             ),
                           ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
-                            decoration: BoxDecoration(
-                              color: _currentTab == 3 ? Colors.white : Colors.transparent,
-                              borderRadius: BorderRadius.circular(4.0),
-                            ),
-                            child: Text(
-                              'Recents',
-                              style: GoogleFonts.poppins(
-                                fontSize: 12,
-                                fontWeight: _currentTab == 3 ? FontWeight.w600 : FontWeight.w500,
-                                color: AppColor.stringBlackColor,
+                          FittedBox(
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
+                              decoration: BoxDecoration(
+                                color: _currentTab == 3 ? Colors.white : Colors.transparent,
+                                borderRadius: BorderRadius.circular(4.0),
+                              ),
+                              child: Text(
+                                'Recents',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 12,
+                                  fontWeight: _currentTab == 3 ? FontWeight.w600 : FontWeight.w500,
+                                  color: AppColor.stringBlackColor,
+                                ),
                               ),
                             ),
                           ),
