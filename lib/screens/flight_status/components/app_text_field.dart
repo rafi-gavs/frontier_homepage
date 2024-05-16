@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../util/appcolor.dart';
@@ -9,6 +10,9 @@ class AppTextField extends StatefulWidget {
   final bool readOnly;
   final String? Function(String?)? validator;
   final TextEditingController? controller;
+  final bool showSuffixIcon;
+  final TextInputType? keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
 
   const AppTextField({
     super.key,
@@ -17,6 +21,9 @@ class AppTextField extends StatefulWidget {
     this.readOnly = false,
     this.validator,
     this.controller,
+    this.showSuffixIcon = true,
+    this.keyboardType,
+    this.inputFormatters,
   });
 
   @override
@@ -27,6 +34,8 @@ class _AppTextFieldState extends State<AppTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      inputFormatters: widget.inputFormatters,
+      keyboardType: widget.keyboardType,
       initialValue: widget.initialValue,
       onTap: widget.onTap,
       readOnly: widget.readOnly,
@@ -57,14 +66,16 @@ class _AppTextFieldState extends State<AppTextField> {
           minHeight: 16.0,
           minWidth: 16.0,
         ),
-        suffixIcon: Padding(
-          padding: const EdgeInsets.only(right: 16.0),
-          child: Image.asset(
-            'assets/appimage/arrow_down.png',
-            height: 16.0,
-            width: 16.0,
-          ),
-        ),
+        suffixIcon: widget.showSuffixIcon
+            ? Padding(
+                padding: const EdgeInsets.only(right: 16.0),
+                child: Image.asset(
+                  'assets/appimage/arrow_down.png',
+                  height: 16.0,
+                  width: 16.0,
+                ),
+              )
+            : null,
       ),
     );
   }

@@ -16,5 +16,6 @@ class AppString {
   static const checkIn = 'Check-in';
   static const manage = 'Manage';
   static const viewBordingPass = 'View Boarding Pass';
-  static const checkFlightStatus='Check Flight Status';
+  static const checkFlightStatus = 'Check Flight Status';
+  static const somethingWentWrong = 'Something went wrong!';
 }

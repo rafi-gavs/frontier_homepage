@@ -1,12 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:frontier_homepage/screens/flight_status/flight_status_tabs/by_cities/widgets/by_cities_bottom_sheet.dart';
+import 'package:frontier_homepage/util/app_enums.dart';
+import 'package:frontier_homepage/util/app_extensions.dart';
+import 'package:frontier_homepage/util/app_functions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../../util/appcolor.dart';
+import '../../../../../util/app_date_picker.dart';
 import '../../../../../util/global_variables.dart';
 import '../../../components/app_button.dart';
 import '../../../components/app_text_field.dart';
+import '../../../models/airport_model.dart';
 import 'by_cities_form_error.dart';
 
 class ByCitiesForm extends StatefulWidget {
@@ -16,8 +22,9 @@ class ByCitiesForm extends StatefulWidget {
   State<ByCitiesForm> createState() => _ByCitiesFormState();
 }
 
-class _ByCitiesFormState extends State<ByCitiesForm> with TickerProviderStateMixin {
-  final DateTime _selectedDate = DateTime.now();
+class _ByCitiesFormState extends State<ByCitiesForm>
+    with TickerProviderStateMixin {
+  var _selectedDate = DateTime.now();
   final double _kPickerSheetHeight = 216.0;
   final _formKey = GlobalKey<FormState>();
   late TextEditingController _departure;
@@ -31,6 +38,9 @@ class _ByCitiesFormState extends State<ByCitiesForm> with TickerProviderStateMix
 
   bool _isError = false;
   bool _showErrorView = false;
+
+  String? _originAirportCode;
+  late TextEditingController _flightDate;
 
   @override
   void initState() {
@@ -64,6 +74,8 @@ class _ByCitiesFormState extends State<ByCitiesForm> with TickerProviderStateMix
       curve: Curves.easeInOut,
     ));
 
+    _flightDate = TextEditingController(text: _selectedDate.toEEEEMMMMdyyyy());
+
     super.initState();
   }
 
@@ -74,6 +86,7 @@ class _ByCitiesFormState extends State<ByCitiesForm> with TickerProviderStateMix
     _arrival.dispose();
     _formAnimationController.dispose();
     _errorAnimationController.dispose();
+    _flightDate.dispose();
     super.dispose();
   }
 
@@ -95,7 +108,8 @@ class _ByCitiesFormState extends State<ByCitiesForm> with TickerProviderStateMix
                   color: const Color(0xffDFDAC9),
                 ),
               ),
-              padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 16.0),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 24.0, horizontal: 16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -129,17 +143,25 @@ class _ByCitiesFormState extends State<ByCitiesForm> with TickerProviderStateMix
                           onTap: () async {
                             //fsScaffoldKey.currentState!.openDrawer();
 
-                            var data = await showModalBottomSheet(
+                            AirportModel? data = await showModalBottomSheet(
                               isScrollControlled: true,
                               useSafeArea: true,
                               context: context,
                               builder: (context) {
-                                return const ByCitiesBottomSheet();
+                                return const ByCitiesBottomSheet(
+                                  airportType: AirportType.departure,
+                                );
                               },
                             );
 
                             if (data != null) {
-                              _departure.text = data;
+                              _originAirportCode = data.code;
+                              _departure.text = AppFunctions.getAirportTitle(
+                                code: data.code,
+                                cityName: data.cityName,
+                                countryCode: data.countryCode,
+                              );
+                              _arrival.clear();
                               setState(() {});
                             }
                           },
@@ -160,30 +182,40 @@ class _ByCitiesFormState extends State<ByCitiesForm> with TickerProviderStateMix
                           ),
                         ),
                         const SizedBox(height: 6.0),
-                        AppTextField(
-                          controller: _arrival,
-                          readOnly: true,
-                          onTap: () async {
-                            var data = await showModalBottomSheet(
-                              isScrollControlled: true,
-                              useSafeArea: true,
-                              context: context,
-                              builder: (context) {
-                                return const ByCitiesBottomSheet();
-                              },
-                            );
+                        IgnorePointer(
+                          ignoring: _originAirportCode == null,
+                          child: AppTextField(
+                            controller: _arrival,
+                            readOnly: true,
+                            onTap: () async {
+                              AirportModel? data = await showModalBottomSheet(
+                                isScrollControlled: true,
+                                useSafeArea: true,
+                                context: context,
+                                builder: (context) {
+                                  return ByCitiesBottomSheet(
+                                    airportType: AirportType.arrival,
+                                    originAirportCode: _originAirportCode,
+                                  );
+                                },
+                              );
 
-                            if (data != null) {
-                              _arrival.text = data;
-                              setState(() {});
-                            }
-                          },
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Arrival airport is required';
-                            }
-                            return null;
-                          },
+                              if (data != null) {
+                                _arrival.text = AppFunctions.getAirportTitle(
+                                  code: data.code,
+                                  cityName: data.cityName,
+                                  countryCode: data.countryCode,
+                                );
+                                setState(() {});
+                              }
+                            },
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Arrival airport is required';
+                              }
+                              return null;
+                            },
+                          ),
                         ),
                         const SizedBox(height: 16.0),
                         Text(
@@ -196,25 +228,17 @@ class _ByCitiesFormState extends State<ByCitiesForm> with TickerProviderStateMix
                         ),
                         const SizedBox(height: 6.0),
                         AppTextField(
-                          initialValue: 'Friday, May 14th, 2024',
+                          controller: _flightDate,
                           readOnly: true,
                           onTap: () {
-                            showCupertinoModalPopup<void>(
+                            AppDatePicker.showDatePicker(
                               context: context,
-                              builder: (BuildContext context) {
-                                return _buildBottomPicker(
-                                  CupertinoDatePicker(
-                                    showDayOfWeek: true,
-                                    maximumDate: _selectedDate.add(
-                                      const Duration(days: 1),
-                                    ),
-                                    minimumDate: _selectedDate.subtract(
-                                      const Duration(days: 1),
-                                    ),
-                                    initialDateTime: _selectedDate,
-                                    onDateTimeChanged: (DateTime newDateTime) {},
-                                  ),
-                                );
+                              initialDate: _selectedDate,
+                              onSelectedDateChanged: (date) {
+                                _selectedDate = date;
+                                _flightDate.text =
+                                    _selectedDate.toEEEEMMMMdyyyy();
+                                setState(() {});
                               },
                             );
                           },
@@ -226,8 +250,10 @@ class _ByCitiesFormState extends State<ByCitiesForm> with TickerProviderStateMix
                               _showErrorView = true;
                               setState(() {
                                 _formAnimation = Tween<Offset>(
-                                  begin: const Offset(0.0, -0.4), // Start from bottom
-                                  end: const Offset(0, 0.0), // Move to original position
+                                  begin: const Offset(
+                                      0.0, -0.4), // Start from bottom
+                                  end: const Offset(
+                                      0, 0.0), // Move to original position
                                 ).animate(CurvedAnimation(
                                   parent: _formAnimationController,
                                   curve: Curves.easeInOut,

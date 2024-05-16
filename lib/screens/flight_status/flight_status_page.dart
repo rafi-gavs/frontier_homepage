@@ -19,7 +19,8 @@ class FlightStatusPage extends StatefulWidget {
   State<FlightStatusPage> createState() => _FlightStatusPageState();
 }
 
-class _FlightStatusPageState extends State<FlightStatusPage> with SingleTickerProviderStateMixin {
+class _FlightStatusPageState extends State<FlightStatusPage>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   int _currentTab = 1;
 
@@ -40,6 +41,7 @@ class _FlightStatusPageState extends State<FlightStatusPage> with SingleTickerPr
       var value = (_tabController.animation?.value)!.round();
       if (value != _currentTab) {
         _currentTab = value;
+        FocusManager.instance.primaryFocus?.unfocus();
         setState(() {});
       }
     });
@@ -69,7 +71,6 @@ class _FlightStatusPageState extends State<FlightStatusPage> with SingleTickerPr
     return Scaffold(
       key: fsScaffoldKey,
       resizeToAvoidBottomInset: false,
-      drawer: const ByCitiesBottomSheet(),
       backgroundColor: AppColor.bgCream,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,16 +104,23 @@ class _FlightStatusPageState extends State<FlightStatusPage> with SingleTickerPr
                         tabs: [
                           FittedBox(
                             child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8.0,
+                                vertical: 2.0,
+                              ),
                               decoration: BoxDecoration(
-                                color: _currentTab == 0 ? Colors.white : Colors.transparent,
+                                color: _currentTab == 0
+                                    ? Colors.white
+                                    : Colors.transparent,
                                 borderRadius: BorderRadius.circular(4.0),
                               ),
                               child: Text(
                                 'My Trips',
                                 style: GoogleFonts.poppins(
                                   fontSize: 12,
-                                  fontWeight: _currentTab == 0 ? FontWeight.w600 : FontWeight.w500,
+                                  fontWeight: _currentTab == 0
+                                      ? FontWeight.w600
+                                      : FontWeight.w500,
                                   color: AppColor.stringBlackColor,
                                 ),
                               ),
@@ -120,16 +128,21 @@ class _FlightStatusPageState extends State<FlightStatusPage> with SingleTickerPr
                           ),
                           FittedBox(
                             child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8.0, vertical: 2.0),
                               decoration: BoxDecoration(
-                                color: _currentTab == 1 ? Colors.white : Colors.transparent,
+                                color: _currentTab == 1
+                                    ? Colors.white
+                                    : Colors.transparent,
                                 borderRadius: BorderRadius.circular(4.0),
                               ),
                               child: Text(
                                 'By Cities',
                                 style: GoogleFonts.poppins(
                                   fontSize: 12,
-                                  fontWeight: _currentTab == 1 ? FontWeight.w600 : FontWeight.w500,
+                                  fontWeight: _currentTab == 1
+                                      ? FontWeight.w600
+                                      : FontWeight.w500,
                                   color: AppColor.stringBlackColor,
                                 ),
                               ),
@@ -137,16 +150,21 @@ class _FlightStatusPageState extends State<FlightStatusPage> with SingleTickerPr
                           ),
                           FittedBox(
                             child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8.0, vertical: 2.0),
                               decoration: BoxDecoration(
-                                color: _currentTab == 2 ? Colors.white : Colors.transparent,
+                                color: _currentTab == 2
+                                    ? Colors.white
+                                    : Colors.transparent,
                                 borderRadius: BorderRadius.circular(4.0),
                               ),
                               child: Text(
                                 'By Number',
                                 style: GoogleFonts.poppins(
                                   fontSize: 12,
-                                  fontWeight: _currentTab == 2 ? FontWeight.w600 : FontWeight.w500,
+                                  fontWeight: _currentTab == 2
+                                      ? FontWeight.w600
+                                      : FontWeight.w500,
                                   color: AppColor.stringBlackColor,
                                 ),
                               ),
@@ -154,16 +172,21 @@ class _FlightStatusPageState extends State<FlightStatusPage> with SingleTickerPr
                           ),
                           FittedBox(
                             child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8.0, vertical: 2.0),
                               decoration: BoxDecoration(
-                                color: _currentTab == 3 ? Colors.white : Colors.transparent,
+                                color: _currentTab == 3
+                                    ? Colors.white
+                                    : Colors.transparent,
                                 borderRadius: BorderRadius.circular(4.0),
                               ),
                               child: Text(
                                 'Recents',
                                 style: GoogleFonts.poppins(
                                   fontSize: 12,
-                                  fontWeight: _currentTab == 3 ? FontWeight.w600 : FontWeight.w500,
+                                  fontWeight: _currentTab == 3
+                                      ? FontWeight.w600
+                                      : FontWeight.w500,
                                   color: AppColor.stringBlackColor,
                                 ),
                               ),

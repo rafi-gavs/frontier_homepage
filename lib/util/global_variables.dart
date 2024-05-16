@@ -6,6 +6,9 @@ bool isLoggedIn = false;
 ///Createded [ValueNotifier] variable [byCitiesViewStackIndex] in [ByCitiesTab] to show result widget based on [IndexedStack] index
 ValueNotifier<int> byCitiesViewStackIndex = ValueNotifier(0);
 
+///Createded [ValueNotifier] variable [byNumberViewStackIndex] in [ByNumberTab] to show result widget based on [IndexedStack] index
+ValueNotifier<int> byNumberViewStackIndex = ValueNotifier(0);
+
 ///Created [ValueNotifier] variable [myTripsViewStackIndex] in [myTripsTab] to show result widget based on [IndexedStack] index
 ValueNotifier<int> myTripsViewStackIndex = ValueNotifier(0);
 
